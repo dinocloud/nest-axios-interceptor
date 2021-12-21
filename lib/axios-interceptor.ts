@@ -1,4 +1,6 @@
-import type { HttpService, OnModuleInit } from "@nestjs/common";
+import type { OnModuleInit } from "@nestjs/common";
+import type { HttpService } from "@nestjs/axios";
+
 import type {
   AxiosError,
   AxiosInterceptorManager,
@@ -15,7 +17,8 @@ export abstract class AxiosInterceptor<
   TRequestConfig extends AxiosRequestConfig = AxiosRequestConfig,
   TResponse extends AxiosResponse = AxiosResponseCustomConfig<TRequestConfig>,
   TAxiosError extends AxiosError = AxiosErrorCustomConfig<TRequestConfig>
-> implements OnModuleInit {
+> implements OnModuleInit
+{
   protected readonly httpService: HttpService;
 
   constructor(httpService: HttpService) {

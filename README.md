@@ -33,7 +33,7 @@ Create a new module and import the `HttpModule`:
 
 ```typescript
 // cats.module.ts
-import { HttpModule, HttpService } from "@nestjs/common";
+import { HttpModule, HttpService } from "@nestjs/axios";
 
 @Module({
   imports: [HttpModule],
@@ -46,7 +46,8 @@ Bootstrap your new interceptor with this boilerplate:
 
 ```typescript
 // logging.axios-interceptor.ts
-import { HttpService, Injectable } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
+import { HttpService } from "@nestjs/axios";
 import type { AxiosRequestConfig, AxiosResponse } from "axios";
 import {
   AxiosInterceptor,

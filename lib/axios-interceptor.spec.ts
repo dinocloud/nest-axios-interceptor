@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 
-import { HttpService, Injectable } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
+import { HttpService } from "@nestjs/axios";
+
 import { Test } from "@nestjs/testing";
 import { AxiosInterceptor } from "./axios-interceptor";
 import { AxiosError } from "axios";
@@ -24,16 +26,15 @@ describe("AxiosInterceptor", () => {
         {
           provide: HttpService,
           useFactory: (): HttpService =>
-            (({
+            ({
               axiosRef: {},
-            } as any) as HttpService),
+            } as any as HttpService),
         },
       ],
     }).compile();
 
-    axiosInterceptor = moduleRef.get<TestAxiosInterceptor>(
-      TestAxiosInterceptor
-    );
+    axiosInterceptor =
+      moduleRef.get<TestAxiosInterceptor>(TestAxiosInterceptor);
     httpService = moduleRef.get<HttpService>(HttpService);
   });
 
