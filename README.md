@@ -24,7 +24,7 @@
 Install this module:
 
 ```shell
-$ npm i @narando/nest-axios-interceptor
+$ npm i @dinocloud/nest-axios-interceptor
 ```
 
 ### Creating an `AxiosInterceptor`
